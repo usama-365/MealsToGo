@@ -1,4 +1,4 @@
-import {Platform, SafeAreaView, StatusBar, StyleSheet, Text, View} from "react-native";
+import {Platform, SafeAreaView, StatusBar, StyleSheet, View} from "react-native";
 import {Searchbar} from "react-native-paper";
 import {RestaurantInfo} from "../components/restaurant-info.component";
 
@@ -11,7 +11,7 @@ export const RestaurantScreen = function () {
                 <Searchbar></Searchbar>
             </View>
             <View style={styles.listView}>
-                <RestaurantInfo />
+                <RestaurantInfo/>
             </View>
         </SafeAreaView>
     );
