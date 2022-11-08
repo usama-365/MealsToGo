@@ -11,11 +11,11 @@ const SafeArea = styled(SafeAreaView)`
 `;
 
 const SearchContainer = styled(View)`
-  padding: 16px;
+  padding: ${props => props.theme.space[3]};
 `;
 
 const ListView = styled(View)`
-  padding: 16px;
+  padding: ${props => props.theme.space[3]};
   flex: 1;
 `;
 
