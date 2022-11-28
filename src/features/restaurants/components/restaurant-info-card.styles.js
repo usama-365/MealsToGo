@@ -6,6 +6,7 @@ import {Text} from "../../../components/typography/text.component";
 // Styled components
 export const RestaurantCard = styled(Card)`
   background-color: ${props => props.theme.colors.bg.primary};
+  margin-bottom: ${props => props.theme.space[3]};
 `;
 
 export const RestaurantCover = styled(Card.Cover)`

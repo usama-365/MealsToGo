@@ -18,7 +18,6 @@ const positionVariant = {
 const getStyleString = function (position, size, theme) {
     const propertyName = positionVariant[position];
     const propertyValue = theme.space[sizeVariant[size]];
-    console.log(`${propertyName}:${propertyValue};`);
     return `${propertyName}:${propertyValue};`;
 };
 
