@@ -5,6 +5,28 @@ import {theme} from "./src/infrastructure/theme";
 
 import {Oswald_400Regular, useFonts as useOswald} from "@expo-google-fonts/oswald";
 import {Lato_400Regular, useFonts as useLato} from "@expo-google-fonts/lato";
+import {NavigationContainer} from "@react-navigation/native";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {Text} from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+
+const Tab = createBottomTabNavigator();
+
+const Setting = () => <Text>Setting</Text>;
+const Map = () => <Text>Map</Text>;
+
+const icons = {
+    "Restaurants": "md-restaurant",
+    "Setting": "md-settings",
+    "Map": "md-map"
+}
+
+const screenOptions = ({route}) => ({
+    tabBarIcon: ({color, size}) => (<Ionicons name={icons[route.name]} size={size} color={color} />),
+    tabBarActiveTintColor: "tomato",
+    tabBarInactiveTintColor: "gray",
+});
 
 export default function App() {
     // Loading fonts
@@ -14,10 +36,16 @@ export default function App() {
     if (!oswaldLoaded || !latoLoaded) {
         return null;
     }
-    return (
+    else return (
         <>
             <ThemeProvider theme={theme}>
-                <RestaurantScreen/>
+                <NavigationContainer>
+                    <Tab.Navigator screenOptions={screenOptions}>
+                        <Tab.Screen name="Restaurants" component={RestaurantScreen}/>
+                        <Tab.Screen name="Map" component={Map}/>
+                        <Tab.Screen name="Setting" component={Setting}/>
+                    </Tab.Navigator>
+                </NavigationContainer>
             </ThemeProvider>
             <ExpoStatusBar style="auto"/>
         </>
