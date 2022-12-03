@@ -9,7 +9,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Text} from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
+import {RestaurantsContextProvider} from "./src/services/restaurants/mock/restaurants.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +23,7 @@ const icons = {
 }
 
 const screenOptions = ({route}) => ({
-    tabBarIcon: ({color, size}) => (<Ionicons name={icons[route.name]} size={size} color={color} />),
+    tabBarIcon: ({color, size}) => (<Ionicons name={icons[route.name]} size={size} color={color}/>),
     tabBarActiveTintColor: "tomato",
     tabBarInactiveTintColor: "gray",
 });
@@ -35,17 +35,18 @@ export default function App() {
     // Validating fonts
     if (!oswaldLoaded || !latoLoaded) {
         return null;
-    }
-    else return (
+    } else return (
         <>
             <ThemeProvider theme={theme}>
-                <NavigationContainer>
-                    <Tab.Navigator screenOptions={screenOptions}>
-                        <Tab.Screen name="Restaurants" component={RestaurantScreen}/>
-                        <Tab.Screen name="Map" component={Map}/>
-                        <Tab.Screen name="Setting" component={Setting}/>
-                    </Tab.Navigator>
-                </NavigationContainer>
+                <RestaurantsContextProvider>
+                    <NavigationContainer>
+                        <Tab.Navigator screenOptions={screenOptions}>
+                            <Tab.Screen name="Restaurants" component={RestaurantScreen}/>
+                            <Tab.Screen name="Map" component={Map}/>
+                            <Tab.Screen name="Setting" component={Setting}/>
+                        </Tab.Navigator>
+                    </NavigationContainer>
+                </RestaurantsContextProvider>
             </ThemeProvider>
             <ExpoStatusBar style="auto"/>
         </>
