@@ -27,11 +27,11 @@ export const RestaurantInfoCard = function ({restaurant = {}}) {
         isOpenNow = true,
         rating = 4,
         isClosedTemporarily = true
-    } = restaurant;
+    } = restaurant.item;
     const ratingArray = Array(Math.round(rating)).fill(0);
     return (
-        <RestaurantCard elevation={5}>
-            <RestaurantCover key={name} source={{uri: photos[0]}}></RestaurantCover>
+        <RestaurantCard elevation={5} key={name}>
+            <RestaurantCover source={{uri: photos[0]}}></RestaurantCover>
             <Info>
                 <Text variant="label">{name}</Text>
                 <Section>

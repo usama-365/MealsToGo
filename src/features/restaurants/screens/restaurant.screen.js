@@ -17,16 +17,16 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 export const RestaurantScreen = function () {
-    const restaurantsContext = useContext(RestaurantsContext);
+    const {restaurants, isLoading, error} = useContext(RestaurantsContext);
     return (
         <>
             <SearchContainer>
                 <Searchbar></Searchbar>
             </SearchContainer>
             <RestaurantList
-                data={restaurantsContext.restaurants}
-                renderItem={() => <RestaurantInfoCard></RestaurantInfoCard>}
-                keyExtractor={item => item.name}
+                data={restaurants}
+                renderItem={(item) => <RestaurantInfoCard restaurant={item} />}
+                keyExtractor={item => item.index}
             />
         </>
     );
