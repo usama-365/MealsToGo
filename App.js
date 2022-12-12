@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -38,15 +39,17 @@ export default function App() {
     } else return (
         <>
             <ThemeProvider theme={theme}>
-                <RestaurantsContextProvider>
-                    <NavigationContainer>
-                        <Tab.Navigator screenOptions={screenOptions}>
-                            <Tab.Screen name="Restaurants" component={RestaurantScreen} />
-                            <Tab.Screen name="Map" component={Map} />
-                            <Tab.Screen name="Setting" component={Setting} />
-                        </Tab.Navigator>
-                    </NavigationContainer>
-                </RestaurantsContextProvider>
+                <LocationContextProvider>
+                    <RestaurantsContextProvider>
+                        <NavigationContainer>
+                            <Tab.Navigator screenOptions={screenOptions}>
+                                <Tab.Screen name="Restaurants" component={RestaurantScreen} />
+                                <Tab.Screen name="Map" component={Map} />
+                                <Tab.Screen name="Setting" component={Setting} />
+                            </Tab.Navigator>
+                        </NavigationContainer>
+                    </RestaurantsContextProvider>
+                </LocationContextProvider>
             </ThemeProvider>
             <ExpoStatusBar style="auto" />
         </>
