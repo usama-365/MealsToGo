@@ -17,11 +17,8 @@ export const Search = function () {
             <Searchbar
                 placeholder="Search for a location"
                 value={searchKeyword}
-                onSubmitEditing={() => { search(searchKeyword) }}
-                onChangeText={(text) => {
-                    if (text.length)
-                        setSearchKeyWord(text)
-                }}
+                onSubmitEditing={() => search(searchKeyword)}
+                onChangeText={(text) => setSearchKeyWord(text)}
             />
         </SearchContainer>
     );
