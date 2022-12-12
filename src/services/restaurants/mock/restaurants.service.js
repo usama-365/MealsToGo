@@ -1,8 +1,8 @@
 // Default location is san fransisco
-import {mockImages, mocks} from "./index";
+import { mockImages, mocks } from "./index";
 import camelize from 'camelize';
 
-export const restaurantsRequest = function (location = "37.7749295,-122.4194155") {
+export const restaurantsRequest = function (location /* = "37.7749295,-122.4194155" */) {
     return new Promise((resolve, reject) => {
         const mock = mocks[location];
         if (!mock) reject("Not found");
@@ -11,7 +11,7 @@ export const restaurantsRequest = function (location = "37.7749295,-122.4194155"
 }
 
 // Transform function
-export const restaurantsTransform = function ({results = []}) {
+export const restaurantsTransform = function ({ results = [] }) {
     const mappedResults = results.map(restaurant => {
         restaurant.photos = restaurant.photos.map(_ => mockImages[Math.ceil(Math.random() * mockImages.length)]);
         return {
