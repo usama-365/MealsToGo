@@ -6,12 +6,12 @@ export const LocationContext = createContext();
 
 
 export const LocationContextProvider = function ({ children }) {
-    const [keyword, setKeyword] = useState("san francisco");
+    const [keyword, setKeyword] = useState("San Francisco");
     const [location, setLocation] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const onSearch = function (keyword = "Antwerp") {
+    const onSearch = function (keyword) {
         setIsLoading(true);
         setKeyword(keyword);
         locationRequest(keyword.toLowerCase())
@@ -20,11 +20,9 @@ export const LocationContextProvider = function ({ children }) {
             .catch(error => setError(error))
             .finally(() => setIsLoading(false));
     };
-    // On load, load the location and change states appropriately
-    useEffect(() => { onSearch(keyword) }, []);
 
     return (
-        <LocationContext.Provider value={{ keyword, location, isLoading, error }}>
+        <LocationContext.Provider value={{ search: onSearch, keyword, location, isLoading, error }}>
             {children}
         </LocationContext.Provider>
     );
