@@ -28,7 +28,7 @@ export const RestaurantScreen = function () {
                     <ActivityIndicator style={{ marginLeft: -25 }} color={Colors.blue300} size={50} animating={true} />
                 </CenteredView>
             ) : (
-                <RestaurantList data={restaurants} renderItem={(item) => <RestaurantInfoCard restaurant={item} />} keyExtractor={item => item.index} />
+                <RestaurantList data={restaurants} renderItem={(item) => <RestaurantInfoCard restaurant={item} />} keyExtractor={item => item.address} />
             )}
 
         </>

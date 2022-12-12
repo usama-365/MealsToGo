@@ -20,7 +20,7 @@ export const LocationContextProvider = function ({ children }) {
             .then(locationTransform)
             .then(result => setLocation(result))
             .catch(error => setError(error))
-            .finally(() => { console.log(keyword, location); setIsLoading(false); });
+            .finally(() => setIsLoading(false));
     };
 
     return (
