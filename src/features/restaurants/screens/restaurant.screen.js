@@ -5,6 +5,7 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import styled from "styled-components/native";
 import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
 import { Search } from "../components/search.component";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle: {
@@ -19,8 +20,9 @@ const CenteredView = styled(View)`
 `;
 
 
-export const RestaurantScreen = function () {
+export const RestaurantScreen = function ({ navigation }) {
     const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+    console.log(navigation);
     return (
         <>
             <Search />
@@ -29,7 +31,15 @@ export const RestaurantScreen = function () {
                     <ActivityIndicator style={{ marginLeft: -25 }} color={Colors.blue300} size={50} animating={true} />
                 </CenteredView>
             ) : (
-                <RestaurantList data={restaurants} renderItem={(item) => <RestaurantInfoCard restaurant={item} />} keyExtractor={item => item.address} />
+                <RestaurantList
+                    data={restaurants}
+                    renderItem={(item) => (
+                        <Pressable onPress={() => navigation.navigate("Restaurants Detail")}>
+                            <RestaurantInfoCard restaurant={item} />
+                        </Pressable>
+                    )}
+                    keyExtractor={item => item.address}
+                />
             )}
         </>
     );
