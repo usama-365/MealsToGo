@@ -5,6 +5,12 @@ import { Lato_400Regular, useFonts as useLato } from "@expo-google-fonts/lato";
 import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { Navigation } from "./src/infrastructure/navigation";
+import styled from "styled-components";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+const SafeArea = styled(SafeAreaView)`
+  flex: 1;
+`;
 
 export default function App() {
     // Loading fonts
@@ -14,12 +20,14 @@ export default function App() {
     if (!oswaldLoaded || !latoLoaded)
         return null;
     else return (
-        <ThemeProvider theme={theme}>
-            <LocationContextProvider>
-                <RestaurantsContextProvider>
-                    <Navigation />
-                </RestaurantsContextProvider>
-            </LocationContextProvider>
-        </ThemeProvider>
+        <SafeArea>
+            <ThemeProvider theme={theme}>
+                <LocationContextProvider>
+                    <RestaurantsContextProvider>
+                        <Navigation />
+                    </RestaurantsContextProvider>
+                </LocationContextProvider>
+            </ThemeProvider>
+        </SafeArea>
     );
 }
