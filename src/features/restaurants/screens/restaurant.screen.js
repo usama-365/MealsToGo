@@ -18,6 +18,7 @@ const CenteredView = styled(View)`
   left: 50%;
 `;
 
+
 export const RestaurantScreen = function () {
     const { restaurants, isLoading, error } = useContext(RestaurantsContext);
     return (
@@ -30,7 +31,6 @@ export const RestaurantScreen = function () {
             ) : (
                 <RestaurantList data={restaurants} renderItem={(item) => <RestaurantInfoCard restaurant={item} />} keyExtractor={item => item.address} />
             )}
-
         </>
     );
 }
