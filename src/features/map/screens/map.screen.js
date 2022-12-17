@@ -26,7 +26,7 @@ export const MapScreen = function () {
         <>
             <Search />
             <Map region={{ latitude: lat, longitude: lng, latitudeDelta: latDelta, longitudeDelta: 0.02 }}>
-                {restaurants.map((restaurant) => <MapView.Marker coordinate={{ longitude: lat, latitude: lng }}></MapView.Marker>)}
+                {restaurants.map((restaurant) => <MapView.Marker key={restaurant.name} title={restaurant.name} coordinate={{ longitude: restaurant.geometry.location.lng, latitude: restaurant.geometry.location.lat }}></MapView.Marker>)}
             </Map>
         </>
     );
