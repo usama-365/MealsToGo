@@ -6,6 +6,7 @@ import styled from "styled-components/native";
 import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
 import { Search } from "../components/search.component";
 import { TouchableOpacity } from "react-native";
+import { SafeArea } from "../../../components/utils/safe-area.component";
 
 const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle: {
@@ -19,11 +20,10 @@ const CenteredView = styled(View)`
   left: 50%;
 `;
 
-
 export const RestaurantScreen = function ({ navigation }) {
     const { restaurants, isLoading, error } = useContext(RestaurantsContext);
     return (
-        <>
+        <SafeArea>
             <Search />
             {isLoading ? (
                 <CenteredView>
@@ -33,13 +33,13 @@ export const RestaurantScreen = function ({ navigation }) {
                 <RestaurantList
                     data={restaurants}
                     renderItem={(item) => (
-                        <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail")}>
+                        <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail", { restaurant: item })}>
                             <RestaurantInfoCard restaurant={item} />
                         </TouchableOpacity>
                     )}
                     keyExtractor={item => item.address}
                 />
             )}
-        </>
+        </SafeArea>
     );
 }
