@@ -1,9 +1,16 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, Platform, View } from "react-native";
+import WebView from "react-native-webview";
 import styled from "styled-components";
 import { Text } from "../typography/text.component";
 
 const CompactImage = styled(Image)`
+    border-radius: 10px;
+    width: 120px;
+    height: 100px;
+    `;
+
+const CompactWebImage = styled(WebView)`
     border-radius: 10px;
     width: 120px;
     height: 100px;
@@ -15,10 +22,13 @@ const Item = styled(View)`
     align-items: center;
 `;
 
-export const CompactRestaurantInfo = function ({ restaurant }) {
+const isAndroid = Platform.OS === 'android';
+
+export const CompactRestaurantInfo = function ({ restaurant, isMap = false }) {
+    const ImageToRender = isAndroid && isMap ? CompactWebImage : CompactImage;
     return (
         <Item>
-            <CompactImage source={{ uri: restaurant.photos[0] }}></CompactImage>
+            <ImageToRender source={{ uri: restaurant.photos[0] }} />
             <Text center variant="caption" numberOfLines={3}>
                 {restaurant.name}
             </Text>
