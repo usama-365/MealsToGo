@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { FlatList, View } from "react-native";
-import { ActivityIndicator, Colors, Searchbar } from "react-native-paper";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
 import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
 import { Search } from "../components/search.component";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { TouchableOpacity } from "react-native";
 
 const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle: {
@@ -22,7 +22,6 @@ const CenteredView = styled(View)`
 
 export const RestaurantScreen = function ({ navigation }) {
     const { restaurants, isLoading, error } = useContext(RestaurantsContext);
-    console.log(navigation);
     return (
         <>
             <Search />
@@ -34,9 +33,9 @@ export const RestaurantScreen = function ({ navigation }) {
                 <RestaurantList
                     data={restaurants}
                     renderItem={(item) => (
-                        <Pressable onPress={() => navigation.navigate("Restaurants Detail")}>
+                        <TouchableOpacity onPress={() => navigation.navigate("RestaurantDetail")}>
                             <RestaurantInfoCard restaurant={item} />
-                        </Pressable>
+                        </TouchableOpacity>
                     )}
                     keyExtractor={item => item.address}
                 />
