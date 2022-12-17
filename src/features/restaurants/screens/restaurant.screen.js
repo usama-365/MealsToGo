@@ -7,6 +7,7 @@ import { RestaurantsContext } from "../../../services/restaurants/mock/restauran
 import { Search } from "../components/search.component";
 import { TouchableOpacity } from "react-native";
 import { SafeArea } from "../../../components/utils/safe-area.component";
+import { FavouritesContext } from "../../../services/favourites/favourites.context";
 
 const RestaurantList = styled(FlatList).attrs({
     contentContainerStyle: {
@@ -22,6 +23,7 @@ const CenteredView = styled(View)`
 
 export const RestaurantScreen = function ({ navigation }) {
     const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+    const { favourites } = useContext(FavouritesContext);
     return (
         <SafeArea>
             <Search />
