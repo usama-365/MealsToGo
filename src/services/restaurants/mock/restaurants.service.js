@@ -13,7 +13,7 @@ export const restaurantsRequest = function (location /* = "37.7749295,-122.41941
 // Transform function
 export const restaurantsTransform = function ({ results = [] }) {
     const mappedResults = results.map(restaurant => {
-        restaurant.photos = restaurant.photos.map(_ => mockImages[Math.ceil(Math.random() * mockImages.length)]);
+        restaurant.photos = restaurant.photos.map(_ => mockImages[Math.ceil(Math.random() * mockImages.length) - 1]);
         return {
             ...restaurant,
             isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,

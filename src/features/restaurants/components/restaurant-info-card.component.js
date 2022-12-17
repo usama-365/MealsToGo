@@ -28,7 +28,7 @@ export const RestaurantInfoCard = function ({ restaurant = {} }) {
         rating = 4,
         isClosedTemporarily = true,
         placeId
-    } = restaurant.item;
+    } = restaurant;
     const ratingArray = Array(Math.round(rating)).fill(0);
     return (
         <RestaurantCard elevation={5} key={name}>
