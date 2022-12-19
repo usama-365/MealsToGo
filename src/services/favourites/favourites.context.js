@@ -21,7 +21,6 @@ export const FavouritesContextProvider = function ({children}) {
         try {
             const value = await AsyncStorage.getItem(`@favourites-${uid}`);
             if (value) setFavourites(JSON.parse(value));
-            console.log(`@favourites-${uid}`);
         } catch (e) {
             console.log(e);
         }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {ImageBackground, View, Text} from "react-native";
+import {ImageBackground, Text, View} from "react-native";
 import {Button, TextInput} from "react-native-paper";
 import {colors} from "../../../infrastructure/theme/colors";
 
@@ -38,3 +38,11 @@ export const AuthInput = styled(TextInput)`
 export const Title = styled(Text)`
   font-size: 30px;
 `
+
+export const AnimationWraper = styled(View)`
+  width: 100%;
+  height: 40%;
+  position: absolute;
+  top: 30px;
+  padding: ${props => props.theme.space[2]};
+`;

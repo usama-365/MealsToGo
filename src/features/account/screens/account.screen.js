@@ -1,14 +1,31 @@
-import {AccountBackground, AccountContainer, AccountCover, AuthButton, Title} from "../components/account.styles";
+import {
+    AccountBackground,
+    AccountContainer,
+    AccountCover,
+    AnimationWraper,
+    AuthButton,
+    Title
+} from "../components/account.styles";
 import {Spacer} from "../../../components/spacer/spacer.component";
 import {useContext} from "react";
 import {AuthenticationContext} from "../../../services/authentication/authentication.context";
 import {ActivityIndicator, Colors} from "react-native-paper";
+import LottieView from "lottie-react-native";
 
 export const AccountScreen = function ({navigation}) {
     const {isLoading} = useContext(AuthenticationContext);
     return (
         <AccountBackground>
             <AccountCover/>
+            <AnimationWraper>
+                <LottieView
+                    source={require("../../../../assets/watermelon.json")}
+                    key="animation"
+                    autoPlay={true}
+                    loop
+                    resizeMode="cover"
+                />
+            </AnimationWraper>
             <Title>Meals To Go</Title>
             <AccountContainer>
                 {
