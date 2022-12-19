@@ -35,7 +35,6 @@ export const LoginScreen = function ({ navigation }) {
                     textContentType="password"
                     secureTextEntry
                     autoCapitalize="none"
-                    secure
                     onChangeText={setPassword}
                 />
                 <Spacer position="top" size="large"/>

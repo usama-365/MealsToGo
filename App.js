@@ -6,23 +6,8 @@ import {RestaurantsContextProvider} from "./src/services/restaurants/mock/restau
 import {LocationContextProvider} from "./src/services/location/location.context";
 import {Navigation} from "./src/infrastructure/navigation";
 import {FavouritesContextProvider} from "./src/services/favourites/favourites.context";
-
-// Import the functions you need from the SDKs you need
-import {initializeApp} from "firebase/app";
 import {AuthenticationContextProvider} from "./src/services/authentication/authentication.context";
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyAEspBL1oXvgkwSOTDrG667dCp9pTVqzkU",
-    authDomain: "mealstogo-bfeda.firebaseapp.com",
-    projectId: "mealstogo-bfeda",
-    storageBucket: "mealstogo-bfeda.appspot.com",
-    messagingSenderId: "784705465293",
-    appId: "1:784705465293:web:ba02a83e4fcec46953b284"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 
 export default function App() {
     // Loading fonts
