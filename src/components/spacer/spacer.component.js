@@ -12,7 +12,7 @@ const positionVariant = {
     top: "marginTop",
     left: "marginLeft",
     right: "marginRight",
-    bottom: "marginRight"
+    bottom: "marginBottom"
 };
 
 const getStyleString = function (position, size, theme) {

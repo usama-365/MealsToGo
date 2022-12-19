@@ -6,9 +6,11 @@ export const AccountScreen = function ({navigation}) {
         <AccountBackground>
             <AccountCover/>
             <AccountContainer>
-                <AuthButton icon="lock-open-outline" mode="contained" onPress={() => navigation.navigate("Login")}>Login</AuthButton>
+                <AuthButton icon="lock-open-outline" mode="contained"
+                            onPress={() => navigation.navigate("Login")}>Login</AuthButton>
                 <Spacer position="top" size="large"/>
-                <AuthButton icon="lock-open-outline" mode="contained" onPress={() => navigation.navigate("Register")}>Register</AuthButton>
+                <AuthButton icon="email" mode="contained"
+                            onPress={() => navigation.navigate("Register")}>Register</AuthButton>
             </AccountContainer>
         </AccountBackground>
     );
