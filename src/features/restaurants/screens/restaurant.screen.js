@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { FlatList, View } from "react-native";
+import { View } from "react-native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
@@ -9,12 +9,9 @@ import { TouchableOpacity } from "react-native";
 import { SafeArea } from "../../../components/utils/safe-area.component";
 import { FavouritesContext } from "../../../services/favourites/favourites.context";
 import { FavouritesBar } from "../../../components/favourites/favourites-bar.component";
+import {RestaurantList} from "../components/restaurant-list.styles";
 
-const RestaurantList = styled(FlatList).attrs({
-    contentContainerStyle: {
-        padding: 16
-    }
-})``;
+
 
 const CenteredView = styled(View)`
   position: absolute;
@@ -23,7 +20,7 @@ const CenteredView = styled(View)`
 `;
 
 export const RestaurantScreen = function ({ navigation }) {
-    const { restaurants, isLoading, error } = useContext(RestaurantsContext);
+    const { restaurants, isLoading } = useContext(RestaurantsContext);
     const { favourites } = useContext(FavouritesContext);
     const [isToggled, setIsToggled] = useState(false);
     return (
