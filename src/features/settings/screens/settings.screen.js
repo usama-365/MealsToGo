@@ -3,7 +3,7 @@ import {SafeArea} from "../../../components/utils/safe-area.component";
 import {Avatar, List} from "react-native-paper";
 import {useContext} from "react";
 import styled from "styled-components";
-import {View} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import {Spacer} from "../../../components/spacer/spacer.component";
 import {Text} from "../../../components/typography/text.component";
 
@@ -20,12 +20,14 @@ export const SettingsScreen = ({navigation}) => {
     return (
         <SafeArea>
             <Spacer position="top" size="large"/>
+            <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
             <AvatarContainer>
                 <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD"/>
                 <Spacer position="top" size="large">
                     <Text variant="label">{user.email}</Text>
                 </Spacer>
             </AvatarContainer>
+            </TouchableOpacity>
             <List.Section>
                 <SettingsItem
                     title="Favourites"
